@@ -45,7 +45,7 @@ public class MariaDBFilterExpressionConverter extends AbstractFilterExpressionCo
 
 	@Override
 	protected void doKey(Filter.Key key, StringBuilder context) {
-		context.append(String.format("JSON_EXTRACT(%s, '$.%s')", this.metadataFieldName, key.key()));
+		context.append("JSON_VALUE(" + this.metadataFieldName + ", '$." + key.key() + "')");
 	}
 
 	@Override
